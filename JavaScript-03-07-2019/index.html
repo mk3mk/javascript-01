@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Приложение на vue </title>
+    
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+
+    <script src="js/main.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+
+
+
+
+<div id="header1" class="container container-header">
+
+  <div class="row justify-content-center">
+		<div class="col-12" style="text-align:center">
+				<h1>Привет</h1>
+		</div>
+  </div>
+
+	<div class="row">
+		<div class="col-6">
+				 <h3>привет</h3>
+		</div>
+		<div class="col-6">
+				 <h3>привет</h3>
+		</div>
+	</div>
+
+</div> <!-- конец header -->
+
+
+
+
+
+
+
+<div id="varianty">
+
+<select v-model="selected"> <option disabled value="">Выберите один из вариантов</option> <option>А</option> <option>Б</option> <option>В</option> </select> <span>Выбрано: {{ selected }}</span>
+
+</div>
+
+
+<div id="less">
+привет
+</div>
+
+
+<div id="app"> {{ message }} </div>
+
+
+<div id="app-2"> <span v-bind:title="message"> Наведи на меня курсор на пару секунд, чтобы увидеть динамически связанное значение title! </span> </div>
+
+
+<div id="app-4"> <ol> <li v-for="todo in todos"> {{ todo.text }} </li> </ol> </div>
+
+
+<div id="app-5"> <p>{{ message }}</p> <button v-on:click="reverseMessage">Перевернуть сообщение</button> </div>
+
+
+<div id="app-6"> <p>{{ message }}</p> <input v-model="message"> </div>
+
+
+
+
+
+<div id="app-7"> 
+<ol>
+ <!-- Теперь мы можем передать каждому компоненту todo-item объект с информацией о задаче, который будет динамически меняться. Мы также определяем для каждого компонента "key", значение которого мы разберём далее в руководстве. -->
+<todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id" ></todo-item>
+</ol>
+</div>
+
+
+<div id="example-1"> <button v-on:click="counter += 1">+1</button> <p>Кнопка выше была нажата {{ counter }} раз</p> </div>
+
+
+
+
+
+
+
+<script>
+
+var app = new Vue({ el: '#app', data: { message: 'Привет, Vue!' } })
+
+var app2 = new Vue({ el: '#app-2', data: { message: 'Вы загрузили эту страницу: ' + new Date().toLocaleString() } })
+
+
+var app4 = new Vue({ el: '#app-4', data: { todos: [ { text: 'Изучить JavaScript' }, { text: 'Изучить Vue' }, { text: 'Создать что-нибудь классное' } ] } })
+
+
+var app5 = new Vue({ el: '#app-5', data: { message: 'Привет, Vue.js!' }, methods: { reverseMessage: function () { this.message = this.message.split('').reverse().join('') } } })
+
+
+var app6 = new Vue({ el: '#app-6', data: { message: 'Привет, Vue!' } })
+
+
+
+
+// Определяем новый компонент под именем todo-item 
+
+Vue.component('todo-item', { 
+// Компонент todo-item теперь принимает
+// "prop", то есть входной параметр.
+// Имя входного параметра todo.
+props: ['todo'], template: '<li>{{ todo.text }}</li>' 
+})
+
+var app7 = new Vue({ el: '#app-7', data: { groceryList: [ { id: 0, text: 'Овощи' }, { id: 1, text: 'Сыр' }, { id: 2, text: 'Что там ещё люди едят?' } ] } })
+
+
+var example1 = new Vue({ el: '#example-1', data: { counter: 0 } })
+
+
+
+new Vue({ el: '#varianty', data: { selected: p 'll'' } })
+
+</script>
+
+
+
+
+
+</body>
+</html>
+

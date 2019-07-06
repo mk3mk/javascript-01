@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>JavaScript</title>    
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/main.js"></script>
+
+</head>
+<body>
+
+<div id="message2">message2</div>
+
+<button id="addItem">Добавить запись</button>
+<button id="deleteChecked">Удалить выбранные</button>
+
+<div id="hran">
+    <h4>хранилище</h4>
+    <div class="item" id="first">
+       <input class="itemCheckbox" type="checkbox">
+       <button class="deleteThisItem">удалить запись</button>
+       <div class="itemDescription">333</div>
+       <div class="treug"></div>
+    </div>
+</div>
+
+<div id="items">
+    <h4>Список дел</h4>
+</div>
+
+
+  <div>
+    <p>Абзац1.</p>
+  </div>
+  <p class="test">Абзац2.</p>
+ 
+  <button class="yellowButton">Выделить цветом два абзаца</button>
+  <button class="yellowButton">Выделить цветом два абзаца</button>
+  <button class="yellowButton">Выделить цветом два абзаца</button>
+  
+  
+
+<script>
+
+//    неизменяемые переменные
+var message2 = document.getElementById('message2');
+var first = document.getElementById('first');
+var items = document.getElementById('items');
+    
+//    изменяемые переменные 
+var allItems = document.querySelectorAll('.item');
+var addedItems = document.querySelectorAll('.added');
+var deleteThisItemVar = document.querySelectorAll('.deleteThisItem');
+var checkedItems = document.querySelectorAll('.checked');
+var itemCheckboxAll = document.querySelectorAll('.itemCheckbox');
+    
+// выводим количество элементов
+console.log('Всего Элементов item = ' + allItems.length);
+console.log('Всего Добавленных added = ' + addedItems.length);
+console.log('Всего Кнопок Удалить = ' + deleteThisItemVar.length);
+console.log('Всего Чекбоксов = ' + itemCheckboxAll.length);
+console.log('Выбранных = ' + checkedItems.length);
+console.log('----------------------------------');
+    
+message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+    
+    
+    // добавление элементов
+    document.getElementById('addItem').onclick = addItemFunc;
+function addItemFunc() { 
+
+    first.cloneNode(true);
+    items.appendChild(first.cloneNode(true));
+    
+    // изменяемые переменные 
+    allItems = document.querySelectorAll('.item');
+    addedItems = document.querySelectorAll('.added');
+    deleteThisItemVar = document.querySelectorAll('.deleteThisItem');
+    checkedItems = document.querySelectorAll('.checked');
+    itemCheckboxAll = document.querySelectorAll('.itemCheckbox');
+
+    // выводим количество элементов
+    console.log('Всего Элементов item = ' + allItems.length);
+    console.log('Всего Добавленных added = ' + addedItems.length);
+    console.log('Всего Кнопок Удалить = ' + deleteThisItemVar.length);
+    console.log('Всего Чекбоксов = ' + itemCheckboxAll.length);
+    console.log('Выбранных = ' + checkedItems.length);
+    console.log('----------------------------------');
+    
+    for (i=0; i<deleteThisItemVar.length; i++){
+        deleteThisItemVar[i].classList.add('rrrrr');
+    }
+    
+    
+    message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+    
+    for (i=0; i<allItems.length; i++){
+        allItems[i].classList.add('added');
+    } 
+}
+    
+    
+    // выбор элементов
+    document.querySelector('.itemCheckbox').onchange = itemCheckBoxChange;        
+    function itemCheckBoxChange() {
+    this.parentNode.classList.toggle('checked');
+    
+    // изменяемые переменные 
+    allItems = document.querySelectorAll('.item');
+    addedItems = document.querySelectorAll('.added');
+    deleteThisItemVar = document.querySelectorAll('.deleteThisItem');
+    checkedItems = document.querySelectorAll('.checked');
+    itemCheckboxAll = document.querySelectorAll('.itemCheckbox');
+
+    // выводим количество элементов
+    console.log('Всего Элементов item = ' + allItems.length);
+    console.log('Всего Добавленных added = ' + addedItems.length);
+    console.log('Всего Кнопок Удалить = ' + deleteThisItemVar.length);
+    console.log('Всего Чекбоксов = ' + itemCheckboxAll.length);
+    console.log('Выбранных = ' + checkedItems.length);
+    console.log('----------------------------------');
+    
+    // выводим сообщение
+    message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+}
+    
+    
+    
+    
+    
+    var itemall = document.querySelectorAll('.item');
+    for(var y=0; y<itemall.length; y++){
+        itemall[y].onclick = function foo() {
+              var matches = document.querySelectorAll(".item");
+              for(var i = 0; i < matches.length; i++) {
+            matches[0].classList.toggle('checked');
+            matches[1].style.background = 'green';
+            matches[2].style.background = 'red';
+            matches[i].classList.toggle('checked');
+          }
+        }
+    }
+    
+     
+
+    
+    
+    // удаление элементов
+    document.querySelector('.deleteThisItem').onclick = deleteThisItem;        
+function deleteThisItem() {
+    this.parentNode.remove(); 
+    
+    // изменяемые переменные 
+    allItems = document.querySelectorAll('.item');
+    addedItems = document.querySelectorAll('.added');
+    deleteThisItemVar = document.querySelectorAll('.deleteThisItem');
+    checkedItems = document.querySelectorAll('.checked');
+    itemCheckboxAll = document.querySelectorAll('.itemCheckbox');
+
+    // выводим количество элементов
+    console.log('Всего Элементов item = ' + allItems.length);
+    console.log('Всего Добавленных added = ' + addedItems.length);
+    console.log('Всего Кнопок Удалить = ' + deleteThisItemVar.length);
+    console.log('Всего Чекбоксов = ' + itemCheckboxAll.length);
+    console.log('Выбранных = ' + checkedItems.length);
+    console.log('----------------------------------');
+    
+    
+    for (i=0; i<deleteThisItemVar.length; i++){
+        document.querySelectorAll('.rrrrr').remove(); 
+    }
+    
+    message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+}
+    
+
+    var yellowButtons = document.querySelectorAll('.yellowButton');
+        for(var y=0; y<yellowButtons.length; y++){
+            yellowButtons[y].onclick = function foo() {
+                  var matches = document.querySelectorAll("div>p, .test");
+                  for(var i = 0; i < matches.length; i++) {
+                matches[i].style.background = 'green';
+              }
+        }
+    }
+    
+
+
+    
+    
+    
+
+</script>
+
+
+
+
+
+
+</body>
+
+
+</html>
+

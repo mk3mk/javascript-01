@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>JavaScript</title>    
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/main.js"></script>
+
+</head>
+<body>
+
+<div id="message2">message2</div>
+
+<button id="addItem">Добавить запись</button>
+<button id="deleteChecked">Удалить выбранные</button>
+
+<div id="hran">
+    <h4>хранилище</h4>
+    <div class="item" id="first">
+       <input class="itemCheckbox" type="checkbox">
+       <button class="deleteThisItem">удалить запись</button>
+       <div class="itemDescription">333</div>
+       <div class="treug"></div>
+    </div>
+</div>
+
+<div id="items">
+    <h4>Список дел</h4>
+</div>
+
+<script>
+    
+var message1 = document.getElementById('message1');
+var button1 = document.getElementById('button1');
+var message2 = document.getElementById('message2');
+var first = document.getElementById('first');
+var items = document.querySelector('#items');
+var allItems = items.querySelectorAll('.item');
+var addedItems = items.querySelectorAll('.added');
+var deleteThisItemVar = document.querySelectorAll('.deleteThisItem');
+var checkedItems = document.querySelectorAll('.checked');
+    
+message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+    
+document.getElementById('addItem').onclick = addItemFunc;
+function addItemFunc() { 
+
+    first.cloneNode(true);
+    items.appendChild(first.cloneNode(true));
+    items.querySelector('.item').classList.add('added');
+
+    
+    
+    message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+    
+    for (i=0; i<allItems.length; i++){
+        allItems[i].classList.add('added');
+    } 
+}
+    
+    
+
+    document.querySelector('.itemCheckbox').onchange = itemCheckBoxChange;        
+function itemCheckBoxChange() {
+    this.parentNode.classList.toggle('checked');
+    
+    message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+}
+    
+    
+    document.querySelector('.deleteThisItem').onclick = deleteThisItem;        
+function deleteThisItem() {
+    this.parentNode.remove();    
+    
+    message2.innerHTML = 'Элементов с классом .item = ' + allItems.length + '<br>' + 'Элементов с классом .added = ' + addedItems.length + '<br>' + 'Кнопок deleteThisItem = ' + deleteThisItemVar.length + '<br>' + 'Выбрано элементов = ' + checkedItems.length; 
+}
+    
+    
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+
+
+</html>
+

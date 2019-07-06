@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<title>Bootstrap Example</title>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<link href="css/style.css" rel="stylesheet">
+
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://onewonder.ru/ieo/vue.js"></script>
+
+</head>
+
+<body style="background: #eee">
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6>
+                <div class="container-slider">
+				
+			</div>
+        </div>
+    </div>
+</div>
+<style>
+	.container-slider{
+		width: 350px;
+		height: 250px;
+		border: 1px solid red;
+		background: #ddd;
+}
+	
+</style>
+
+
+
+
+
+
+
+
+<div id="calc-sites">
+
+<section class="section-calculator">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-xs-7">
+
+<div class="calc-item-box">
+
+<div class="row">
+
+<div class="col-xs-4">
+
+<div class="calc-item-name">
+
+Тип работы
+
+</div>
+
+</div>
+
+<div class="col-xs-5">
+
+<select v-model="selectedType">
+
+<option v-for="projectType in projectTypes" v-bind:value="projectType.price">
+
+{{projectType.name}}
+
+</option>
+
+</select>
+
+</div>
+
+<div class="col-xs-3">
+
+<div class="price-box">
+
+$ {{selectedType}}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="calc-item-box">
+
+<div class="row">
+
+<div class="col-xs-4">
+
+<div class="calc-item-name">
+
+CMS-система
+
+</div>
+
+</div>
+
+<div class="col-xs-5">
+
+<select v-model="selectedBackend">
+
+<option v-for="projectBackend in projectBackends" v-bind:value="projectBackend.price">
+
+{{projectBackend.name}}
+
+</option>
+
+</select>
+
+</div>
+
+<div class="col-xs-3">
+
+<div class="price-box">
+
+$ {{selectedBackend}}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="calc-item-box">
+
+<div class="row">
+
+<div class="col-xs-4">
+
+<div class="calc-item-name">
+
+Дополнительные функции
+
+</div>
+
+</div>
+
+<div class="col-xs-5">
+
+<div class="dropdown">
+
+<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="check-toggle-button">
+
+Нажмите сюда, чтобы выбрать
+
+<span class="caret"></span>
+
+</button>
+
+<ul class="dropdown-menu list-check" aria-labelledby="dLabel">
+
+<li v-for="projectAdditional in projectAdditionals">
+
+<label class="check-label-own">
+
+<input type="checkbox" v-bind:value="projectAdditional.price" v-model="selectedAdditionals" class="check-own">
+
+{{projectAdditional.name}}</label>
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="col-xs-3">
+
+<div class="price-box">
+
+$ {{sumAdditionals}}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="calc-item-box">
+
+<div class="row">
+
+<div class="col-xs-4">
+
+<div class="calc-item-name">
+
+Функции для магазинов
+
+</div>
+
+</div>
+
+<div class="col-xs-5">
+
+<div class="dropdown">
+
+<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="check-toggle-button">
+
+Нажмите сюда, чтобы выбрать
+
+<span class="caret"></span>
+
+</button>
+
+<ul class="dropdown-menu list-check" aria-labelledby="dLabel">
+
+<li v-for="projectShop in projectShops">
+
+<label class="check-label-own">
+
+<input type="checkbox" v-bind:value="projectShop.price" v-model="selectedShops" class="check-own">
+
+{{projectShop.name}}</label></li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="col-xs-3">
+
+<div class="price-box">
+
+$ {{sumShops}}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="calc-item-box">
+
+<div class="row">
+
+<div class="col-xs-9">
+
+<div class="calc-item-name">
+
+Общая сумма:
+
+</div>
+
+</div>
+
+<div class="col-xs-3">
+
+<div class="total-price-box">
+
+$ {{selectedType + selectedBackend + sumAdditionals + sumShops}}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xs-5"></div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<style>
+
+#calc-sites{
+
+border:2px solid red;
+
+}
+
+.section-calculator {
+
+padding: 20px 0;
+
+background-color: #eee;
+
+}
+
+.calc-item-box {
+
+width: 100%;
+
+height: 40px;
+
+}
+
+.check-toggle-button {
+
+width: 100%;
+
+position: relative;
+
+text-align: left;
+
+}
+
+.check-toggle-button > .caret {
+
+position: absolute;
+
+top: 50%;
+
+right: 6px;
+
+transform: translateY(-10%);
+
+}
+
+.list-check {
+
+display: none;
+
+position: absolute;
+
+top: 30px;
+
+left: 0;
+
+z-index: 30;
+
+background-color: #fff;
+
+}
+
+.list-check > li {
+
+height: 40px;
+
+padding: 0 5px;
+
+}
+
+.list-check > li .check-own,
+
+.list-check > li .check-label-own {
+
+display: block;
+
+float: left;
+
+}
+
+</style>
+
+<script>
+
+new Vue({
+
+el: '#calc-sites',
+
+data: {
+
+calcItemNames: ['Тип работы', 'CMS система'],
+
+projectTypes: [
+
+{name: 'Лендинг', price: 100},
+
+{name: 'Корпоративный сайт', price: 200},
+
+{name:'Магазин', price: 300},
+
+{name: 'Новостной', price: 400}
+
+],
+
+selectedType: 100,
+
+projectBackends: [
+
+{name: 'Без CMS', price: 150},
+
+{name: 'Wordpress', price: 300},
+
+{name:'Самописный', price: 500}
+
+],
+
+selectedBackend: 150,
+
+projectContents: [
+
+{name: 'Самостоятельно', price: 0},
+
+{name: 'Под ключ', price: 350},
+
+],
+
+selectedContent : 150,
+
+projectAdditionals: [
+
+{name: 'Мультиязычность', price: 100},
+
+{name: 'Калькулятор стоимости услуг', price: 200},
+
+{name: 'Обратный звонок', price: 300},
+
+{name: 'Карта', price: 400}
+
+],
+
+selectedAdditionals: [],
+
+projectShops: [
+
+{name: 'Сложная система фильтрации товаров', price: 100},
+
+{name: 'Заказ в 1 клик', price: 200},
+
+{name: 'Синхронизация с 1с', price: 300},
+
+{name: 'Оплата онлайн', price: 400}
+
+],
+
+selectedShops: [],
+
+},
+
+computed: {
+
+sumAdditionals(){
+
+return this.selectedAdditionals.reduce(function(a,b){
+
+return parseInt(a) + parseInt(b);
+
+}, 0)
+
+},
+
+sumShops(){
+
+return this.selectedShops.reduce(function(a,b){
+
+return parseInt(a) + parseInt(b);
+
+}, 0)
+
+}
+
+},
+
+});
+
+$(function () {
+
+$('.dropdown-toggle').dropdown();
+
+$('.dropdown ul').click(function (e) {
+
+e.stopPropagation();
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
+
